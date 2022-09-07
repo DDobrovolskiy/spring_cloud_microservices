@@ -1,6 +1,9 @@
 #### Spring_cloud_microservices
 * https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#configuration-properties
 
+#### DiscoveryClient
+* https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html
+
 #### FeingClient
 * https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html#spring-cloud-feign-inheritance
 
