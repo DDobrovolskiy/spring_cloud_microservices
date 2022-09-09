@@ -13,3 +13,4 @@
 * https://habr.com/ru/company/domrf/blog/666218/
 * https://github.com/SaiUpadhyayula/springboot-microservices-project
 * https://www.youtube.com/watch?v=LaZGedpfAyM
+* https://habr.com/ru/post/687210/
