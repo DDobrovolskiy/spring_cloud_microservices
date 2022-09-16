@@ -14,3 +14,5 @@
 * https://github.com/SaiUpadhyayula/springboot-microservices-project
 * https://www.youtube.com/watch?v=LaZGedpfAyM
 * https://habr.com/ru/post/687210/
+
+https://github.com/alek-sys  
