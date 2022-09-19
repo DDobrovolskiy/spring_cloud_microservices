@@ -1,0 +1,19 @@
+server:
+  port: ${SERVER_PORT:888}
+
+cloud:
+  config:
+    server:
+      native:
+        search-locations: classpath:/config
+
+spring:
+  application:
+    name: config
+  profiles:
+    active: native
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${SERVER_DISCOVERY:http://localhost:8081/eureka}

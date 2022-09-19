@@ -1,0 +1,19 @@
+server:
+  port: ${SERVER_PORT:9043}
+
+spring:
+  application:
+    name: facade
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${SERVER_DISCOVERY:http://localhost:8081/eureka}
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full

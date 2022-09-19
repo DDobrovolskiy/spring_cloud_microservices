@@ -1,0 +1,18 @@
+server:
+  port: ${SERVER_PORT:8081}
+
+spring:
+  application:
+    name: discovery
+  config:
+    import:
+      configserver: ${SERVER_CONFIG:http://localhost:8888}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${SERVER_DISCOVERY:http://localhost:8081/eureka}
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    enable-self-preservation: false #ÐÐ¶Ð¸Ð´Ð°Ð½Ð¸Ðµ ÑÐ´Ð°Ð»ÐµÐ½Ð¸Ñ ÑÐµÑÐ²ÐµÑÐ° Ð¸ Ð¾ÑÐºÐ»ÑÑÐµÐ½Ð¸Ñ Ð¿Ð¾ÑÐ¾Ð³Ð° Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑÐ¸

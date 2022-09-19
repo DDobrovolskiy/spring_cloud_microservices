@@ -1,0 +1,2 @@
+autoconfig:
+  eclient: ${spring.application.name}

@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.cloud</groupId>
-    <artifactId>config_server</artifactId>
+    <artifactId>cloud_api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>config_server</name>
+    <name>cloud_api</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
