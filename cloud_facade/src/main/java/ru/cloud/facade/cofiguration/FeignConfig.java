@@ -8,7 +8,8 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.concurrent.TimeUnit;
 
-@Configuration
+//Запасной вариант конфигурирования
+//@Configuration
 public class FeignConfig {
 
     @Bean

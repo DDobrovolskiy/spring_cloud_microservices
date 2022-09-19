@@ -16,6 +16,24 @@ feign:
   client:
     config:
       default:
-        connectTimeout: 5000
-        readTimeout: 5000
+        connectTimeout: 1000  #Time waiting
+        readTimeout: 1000     #Time retry
         loggerLevel: full
+  circuitbreaker:
+    enabled: true
+    alphanumeric-ids:
+      enabled: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      NamedFeignServicegetName:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        waitDurationInOpenState: 5s
+        slidingWindowType: COUNT_BASED
