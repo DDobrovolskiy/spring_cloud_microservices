@@ -4,6 +4,6 @@ import ru.cloud.facade.cofiguration.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import ru.api.NameApi;
 
-@FeignClient(value = "eclient", configuration = {FeignConfig.class})
+@FeignClient(value = "order", configuration = {FeignConfig.class})
 public interface NamedFeignService extends NameApi {
 }

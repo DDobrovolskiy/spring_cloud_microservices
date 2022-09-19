@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER_PORT:888}
+  port: ${SERVER_PORT:8888}
 
 cloud:
   config:
@@ -16,4 +16,4 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: ${SERVER_DISCOVERY:http://localhost:8081/eureka}
+      defaultZone: ${SERVER_DISCOVERY:http://localhost:8889/eureka}

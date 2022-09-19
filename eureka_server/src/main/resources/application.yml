@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER_PORT:8081}
+  port: ${SERVER_PORT:8889}
 
 spring:
   application:
@@ -11,8 +11,8 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: ${SERVER_DISCOVERY:http://localhost:8081/eureka}
+      defaultZone: ${SERVER_DISCOVERY:http://localhost:8889/eureka}
     registerWithEureka: false
     fetchRegistry: false
   server:
-    enable-self-preservation: false #ÐÐ¶Ð¸Ð´Ð°Ð½Ð¸Ðµ ÑÐ´Ð°Ð»ÐµÐ½Ð¸Ñ ÑÐµÑÐ²ÐµÑÐ° Ð¸ Ð¾ÑÐºÐ»ÑÑÐµÐ½Ð¸Ñ Ð¿Ð¾ÑÐ¾Ð³Ð° Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑÐ¸
+    enable-self-preservation: false
