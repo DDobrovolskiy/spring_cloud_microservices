@@ -18,10 +18,8 @@ public class GatewayApplication {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route("name", r -> r
-                        .path("/api/name")
-                        .and()
-                        .method(HttpMethod.GET)
+                .route( r -> r
+                        .path("/api/**")
                         .uri("lb://facade"))
                 .build();
     }

@@ -16,12 +16,13 @@ public class NameRestController implements NameApi {
 
     @Override
     public String getName() {
+        //Замедляем ответ для теста retry
         System.out.println(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME) + " - test");
-        try {
-            Thread.sleep(7000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(7000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         return "config: " + config + " id: " + instance;
     }
 }

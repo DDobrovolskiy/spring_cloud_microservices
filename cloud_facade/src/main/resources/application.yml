@@ -1,5 +1,8 @@
 server:
   port: ${SERVER_PORT:0}
+  shutdown: graceful
+  servlet:
+    context-path: /api
 
 spring:
   application:
@@ -27,7 +30,7 @@ feign:
 resilience4j:
   circuitbreaker:
     instances:
-      NamedFeignServicegetName:
+      NamedProxyServicegetName:
         registerHealthIndicator: true
         eventConsumerBufferSize: 10
         automaticTransitionFromOpenToHalfOpenEnabled: true

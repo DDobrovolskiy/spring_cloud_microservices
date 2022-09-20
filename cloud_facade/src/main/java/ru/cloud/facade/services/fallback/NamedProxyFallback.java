@@ -1,7 +1,6 @@
 package ru.cloud.facade.services.fallback;
 
-import org.springframework.stereotype.Component;
-import ru.cloud.facade.services.NamedFeignService;
+import ru.cloud.facade.services.NamedProxyService;
 
 /**
  * @author ddobrovolskiy
@@ -9,7 +8,7 @@ import ru.cloud.facade.services.NamedFeignService;
  */
 
 //@Component
-public class NamedFeignFallback implements NamedFeignService {
+public class NamedProxyFallback implements NamedProxyService {
     @Override
     public String getName() {
         System.out.println("503 - Server not available");

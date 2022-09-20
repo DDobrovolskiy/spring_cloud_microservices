@@ -1,11 +1,18 @@
 server:
   port: ${SERVER_PORT:0}
+  shutdown: graceful
+  servlet:
+    context-path: /api
 
 spring:
   application:
     name: order
   config:
-    import: configserver:${SERVER_CONFIG:http://localhost:8888}
+    import: configserver:http://localhost:8888
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: RAs9dzDEHYf@@jXCAu*7DEateY9NKMBxwc#8dsB4G^?Gje_sY2Sw5UQkUU!YR=4R
 
 eureka:
   client:
