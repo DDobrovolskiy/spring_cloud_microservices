@@ -1,5 +1,6 @@
 package ru.cloud.order.controller;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import ru.api.TokenApi;
@@ -12,10 +13,12 @@ import java.util.List;
  * @since 20.09.2022
  */
 
+@Data
 @RestController
 public class TokenRestController implements TokenApi {
 
     @Autowired private TokenService service;
+
 
     @Override
     public List<String> getTokens() {
@@ -27,3 +30,4 @@ public class TokenRestController implements TokenApi {
         return service.createToken(seed);
     }
 }
+

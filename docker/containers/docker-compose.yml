@@ -30,6 +30,34 @@ services:
     networks:
       - cloud-network-my
 
+  elastic:
+    restart: always
+    image: elasticsearch:8.5.1
+    container_name: elastic-container
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '30m'
+        max-file: '10'
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+#    environment:
+#      - xpack.security.enabled=false
+#      - discovery.type=single-node
+#      - http.port=9200
+#      - http.cors.enabled=true
+#      - http.cors.allow-origin=http://localhost:1358,http://127.0.0.1:1358
+#      - http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization
+#      - http.cors.allow-credentials=true
+#      - bootstrap.memory_lock=true
+#      - "ES_JAVA_OPTS=-Xms512m -Xmx2048m"
+    networks:
+      - cloud-network-my
+
 networks:
   cloud-network-my:
     driver: bridge

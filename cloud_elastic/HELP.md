@@ -1,0 +1,2 @@
+* docker run -d --name es762 -p 9200:9200 -e "discovery.type=single-node" -e "http.cors.enabled=true" -e "http.cors.allow-origin=http://localhost:10101" elasticsearch:7.6.2  
+* docker run -d --name elasticvue -p 10101:8080 cars10/elasticvue
