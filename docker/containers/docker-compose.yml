@@ -18,6 +18,7 @@ services:
       - 6379:6379
     networks:
       - cloud-network-my
+
   redis-commander:
     container_name: redis-commander
     hostname: redis-commander
@@ -30,33 +31,54 @@ services:
     networks:
       - cloud-network-my
 
-  elastic:
-    restart: always
-    image: elasticsearch:8.5.1
-    container_name: elastic-container
-    logging:
-      driver: 'json-file'
-      options:
-        max-size: '30m'
-        max-file: '10'
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.3.3
+    container_name: elasticsearch_springboot
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.type=single-node"
+      - xpack.security.enabled=false
     ports:
       - "9200:9200"
-      - "9300:9300"
-
     volumes:
-      - esdata:/usr/share/elasticsearch/data
-#    environment:
-#      - xpack.security.enabled=false
-#      - discovery.type=single-node
-#      - http.port=9200
-#      - http.cors.enabled=true
-#      - http.cors.allow-origin=http://localhost:1358,http://127.0.0.1:1358
-#      - http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization
-#      - http.cors.allow-credentials=true
-#      - bootstrap.memory_lock=true
-#      - "ES_JAVA_OPTS=-Xms512m -Xmx2048m"
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    networks:
+      - elastic
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.3.3
+    container_name: kibana_springboot
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
+    depends_on:
+      - elasticsearch
     networks:
       - cloud-network-my
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.3.3
+    container_name: logstash_springboot
+    volumes:
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+    ports:
+      - "5044:5044"
+      - "5000:5000/tcp"
+      - "5000:5000/udp"
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - cloud-network-my
+    depends_on:
+      - elasticsearch
+
+volumes:
+  elasticsearch_data:
+    driver: local
 
 networks:
   cloud-network-my:
