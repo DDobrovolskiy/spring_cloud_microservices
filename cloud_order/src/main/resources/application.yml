@@ -7,12 +7,17 @@ server:
 spring:
   application:
     name: order
-  config:
-    import: configserver:http://localhost:8888
-  redis:
-    host: 127.0.0.1
-    port: 6379
-    password: RAs9dzDEHYf@@jXCAu*7DEateY9NKMBxwc#8dsB4G^?Gje_sY2Sw5UQkUU!YR=4R
+#  config:
+#    import: optional:configserver:http://localhost:8888
+#  redis:
+#    host: 127.0.0.1
+#    port: 6379
+#    password: RAs9dzDEHYf@@jXCAu*7DEateY9NKMBxwc#8dsB4G^?Gje_sY2Sw5UQkUU!YR=4R
+#  cloud:
+#    config:
+#      enabled: false
+#      import-check:
+#        enabled: false
 
 eureka:
   client:
@@ -20,3 +25,6 @@ eureka:
       defaultZone: ${SERVER_DISCOVERY:http://localhost:8889/eureka}
   instance:
     instance-id: ${random.value}
+
+autoconfig:
+  eclient: ${spring.application.name}

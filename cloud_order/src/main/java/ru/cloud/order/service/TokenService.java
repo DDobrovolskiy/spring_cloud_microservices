@@ -17,15 +17,17 @@ import java.util.stream.Collectors;
 @Service
 public class TokenService {
 
-    @Autowired private TokenRedisRepository repository;
+//    @Autowired private TokenRedisRepository repository;
 
     public List<String> getTokens() {
-        return repository.findAll().stream()
-                .map(Token::getToken)
-                .collect(Collectors.toList());
+//        return repository.findAll().stream()
+//                .map(Token::getToken)
+//                .collect(Collectors.toList());
+        return List.of("TOKEN");
     }
 
     public String createToken(String seed) {
-        return repository.save(new Token(UUID.randomUUID().toString(), seed)).getId();
+//        return repository.save(new Token(UUID.randomUUID().toString(), seed)).getId();
+        return seed;
     }
 }

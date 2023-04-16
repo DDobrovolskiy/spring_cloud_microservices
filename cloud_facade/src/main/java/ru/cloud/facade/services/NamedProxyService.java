@@ -7,20 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.api.NameApi;
 
-@FeignClient(contextId = "name", name = "order", fallbackFactory = NamedFallbackFactory.class)//fallback = NamedFeignFallback.class)//, configuration = {FeignConfig.class})
+import java.util.List;
+
+@FeignClient(contextId = "name", name = "order")//fallback = NamedFeignFallback.class)//, configuration = {FeignConfig.class})
 public interface NamedProxyService extends NameApi {
 
     @Override
     @GetMapping("/api/name")
-    String getName();
-}
+    List<String> getName();
 
-@Component
-class NamedFallbackFactory implements FallbackFactory<NameApi> {
     @Override
-    public NameApi create(Throwable cause) {
-        System.out.println("Server ERROR");
-        System.out.println(cause.getMessage());
-        return (NamedProxyService) cause::getMessage;
-    }
+    @GetMapping("/api/name2")
+    List<String> getName2();
 }

@@ -15,28 +15,28 @@ eureka:
     service-url:
       defaultZone: ${SERVER_DISCOVERY:http://localhost:8889/eureka}
 
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 1000  #Time waiting
-        readTimeout: 1000     #Time retry
-        loggerLevel: full
-  circuitbreaker:
-    enabled: true
-    alphanumeric-ids:
-      enabled: true
-
-resilience4j:
-  circuitbreaker:
-    instances:
-      NamedProxyServicegetName:
-        registerHealthIndicator: true
-        eventConsumerBufferSize: 10
-        automaticTransitionFromOpenToHalfOpenEnabled: true
-        failureRateThreshold: 50
-        minimumNumberOfCalls: 5
-        permittedNumberOfCallsInHalfOpenState: 3
-        slidingWindowSize: 10
-        waitDurationInOpenState: 5s
-        slidingWindowType: COUNT_BASED
+#feign:
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 1000  #Time waiting
+#        readTimeout: 1000     #Time retry
+#        loggerLevel: full
+#  circuitbreaker:
+#    enabled: true
+#    alphanumeric-ids:
+#      enabled: true
+#
+#resilience4j:
+#  circuitbreaker:
+#    instances:
+#      NamedProxyServicegetName:
+#        registerHealthIndicator: true
+#        eventConsumerBufferSize: 10
+#        automaticTransitionFromOpenToHalfOpenEnabled: true
+#        failureRateThreshold: 50
+#        minimumNumberOfCalls: 5
+#        permittedNumberOfCallsInHalfOpenState: 3
+#        slidingWindowSize: 10
+#        waitDurationInOpenState: 5s
+#        slidingWindowType: COUNT_BASED
